@@ -394,16 +394,16 @@
 /* ================= HEADER ================= */
 
 .sm-header .es-logo {
-    width: 350px;
-    height: 110px;
+    width: 280px;
+    height: 85px;
     transform: none !important;
     transform-origin: center;
 }
 
 .sm-header .es-logo-img {
-    width: 350px !important;
-    max-width: 350px !important;
-    max-height: 100px !important;
+    width: auto !important;
+    max-width: 280px !important;
+    max-height: 75px !important;
 }
 
 /* ================= FOOTER ================= */
@@ -419,36 +419,57 @@
 .sm-footer .es-logo-img {
     width: 100% !important;
     max-width: 210px !important;
-    max-height: 90px !important;
+    max-height: 85px !important;
     height: auto !important;
 }
 
-/* ================= MOBILE ================= */
+/* ================= RESPONSIVE LOGO ================= */
+@media (max-width: 1200px) {
+    .sm-header .es-logo { width: 230px; height: 70px; }
+    .sm-header .es-logo-img { max-width: 230px !important; max-height: 65px !important; }
+}
+
+@media (max-width: 1024px) {
+    .sm-header .es-logo { width: 190px; height: 56px; }
+    .sm-header .es-logo-img { max-width: 190px !important; max-height: 50px !important; }
+}
 
 @media (max-width: 640px) {
     .sm-header .es-logo {
-        width: 280px;
-        height: 85px;
+        width: 140px;
+        height: 44px;
     }
 
     .sm-header .es-logo-img {
-        width: 280px !important;
-        max-width: 280px !important;
-        max-height: 75px !important;
+        width: auto !important;
+        max-width: 140px !important;
+        max-height: 40px !important;
     }
 
     .sm-footer .es-logo {
         width: 100%;
-        max-width: 180px;
+        max-width: 160px;
         height: auto;
     }
 
     .sm-footer .es-logo-img {
         width: 100% !important;
-        max-width: 180px !important;
-        max-height: 75px !important;
+        max-width: 160px !important;
+        max-height: 65px !important;
     }
 }
+
+@media (max-width: 380px) {
+    .sm-header .es-logo {
+        width: 120px;
+        height: 38px;
+    }
+    .sm-header .es-logo-img {
+        max-width: 120px !important;
+        max-height: 34px !important;
+    }
+}
+
 
         /* Nav chính */
         .sm-nav { display: flex; align-items: center; gap: 30px; margin: 0; padding: 0; list-style: none; flex: 1; }
@@ -717,36 +738,179 @@
            7. RESPONSIVE
            ============================================================ */
         @media (max-width: 1024px) {
+            :root { --sm-header-h: 74px; }
             .sm-nav { display: none; }
             .sm-burger {
-                display: inline-flex; margin-left: auto;
+                display: inline-flex;
             }
             .sm-header .inner { gap: 14px; }
-            .sm-footer-top { grid-template-columns: 1fr 1fr; }
+            .sm-footer-top { grid-template-columns: repeat(2, 1fr); gap: 32px; }
         }
-        @media (max-width: 640px) {
-            :root { --sm-radius: 18px; --sm-header-h: 95px; }
+
+        @media (max-width: 768px) {
             .sm-utility { display: none; }
-            .sm-footer-top { grid-template-columns: 1fr; padding: 48px 20px 36px; }
-            .sm-footer-bottom { flex-direction: column; gap: 10px; align-items: flex-start; }
-            .sm-header .inner { padding: 0 16px; }
+        }
+
+        @media (max-width: 640px) {
+            :root { --sm-radius: 18px; --sm-header-h: 62px; }
+            .sm-header .inner {
+                padding: 0 12px;
+                gap: 8px;
+                justify-content: space-between;
+            }
+            .sm-actions {
+                gap: 2px;
+            }
+            .sm-icon-btn {
+                width: 36px;
+                height: 36px;
+                font-size: 16px;
+            }
+            .sm-cart-badge, .notif-badge {
+                top: 2px;
+                right: 2px;
+                min-width: 15px;
+                height: 15px;
+                line-height: 15px;
+                font-size: 9px;
+                padding: 0 3px;
+            }
+            .notif-dropdown {
+                position: fixed;
+                top: calc(var(--sm-header-h) + 6px);
+                left: 10px;
+                right: 10px;
+                width: auto;
+                max-width: calc(100vw - 20px);
+                border-radius: 16px;
+            }
+            .notif-dropdown::before {
+                right: 52px;
+            }
+            .notif-list {
+                max-height: 300px;
+            }
+            .sm-search-panel {
+                padding: 0 16px;
+            }
+            .sm-search-panel .wrap {
+                padding: 20px 0 16px;
+            }
+            .sm-search-form input {
+                font-size: 18px;
+            }
+            .sm-search-tags a {
+                font-size: 12px;
+                padding: 5px 11px;
+            }
+            .sm-footer-top {
+                grid-template-columns: 1fr;
+                padding: 36px 16px 24px;
+                gap: 24px;
+            }
+            .sm-footer-col {
+                border-bottom: 1px solid var(--sm-line);
+                padding-bottom: 20px;
+            }
+            .sm-footer-col:last-child {
+                border-bottom: none;
+                padding-bottom: 0;
+            }
+            .sm-footer-bottom {
+                flex-direction: column;
+                gap: 12px;
+                align-items: center;
+                text-align: center;
+                padding: 18px 16px;
+            }
+            .sm-footer-bottom nav {
+                justify-content: center;
+                gap: 12px;
+            }
+            .sm-top-event-banner {
+                padding: 6px 12px;
+            }
+            .sm-top-event-banner a.inner {
+                font-size: 12px;
+                gap: 6px;
+                text-align: center;
+                line-height: 1.35;
+            }
+            .sm-top-event-banner__dot {
+                width: 6px;
+                height: 6px;
+                flex-shrink: 0;
+            }
+            .sm-top {
+                right: 14px;
+                bottom: 84px;
+                width: 40px;
+                height: 40px;
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            :root { --sm-header-h: 58px; }
+            .sm-header .inner {
+                padding: 0 10px;
+            }
+            .sm-icon-btn {
+                width: 34px;
+                height: 34px;
+                font-size: 15px;
+            }
         }
 
         /* Mobile drawer */
         .sm-drawer {
-            position: fixed; top: 0; right: 0; bottom: 0; width: min(86vw, 340px);
-            background: var(--sm-white); z-index: 620; padding: 22px;
-            transform: translateX(100%); transition: transform .45s var(--sm-ease);
-            display: flex; flex-direction: column; gap: 4px;
-            box-shadow: -12px 0 40px rgba(0,0,0,.12);
+            position: fixed; top: 0; right: 0; bottom: 0; width: min(85vw, 320px);
+            background: var(--sm-white); z-index: 620; padding: 20px 20px;
+            transform: translateX(100%); transition: transform .4s var(--sm-ease);
+            display: flex; flex-direction: column; gap: 0;
+            box-shadow: -12px 0 40px rgba(0,0,0,.14);
+            overflow-y: auto;
         }
         .sm-drawer.open { transform: translateX(0); }
-        .sm-drawer a {
-            font-family: 'Manrope', sans-serif; font-weight: 700; font-size: 19px;
-            color: var(--sm-black); padding: 14px 0;
-            border-bottom: 1px solid var(--sm-line);
+        .sm-drawer .drawer-header {
+            display: flex; align-items: center; justify-content: space-between;
+            padding-bottom: 14px; border-bottom: 1px solid var(--sm-line);
+            margin-bottom: 8px;
         }
-        .sm-drawer .close { align-self: flex-end; border: none; background: transparent; font-size: 22px; margin-bottom: 10px; cursor: pointer; }
+        .sm-drawer .close {
+            border: none; background: #f1f5f9; width: 36px; height: 36px;
+            border-radius: 50%; font-size: 16px; cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            color: var(--sm-black); transition: background .2s;
+        }
+        .sm-drawer .close:hover { background: #e2e8f0; }
+        .sm-drawer a.drawer-link {
+            font-family: 'Manrope', sans-serif; font-weight: 700; font-size: 15px;
+            color: var(--sm-black); padding: 13px 4px;
+            border-bottom: 1px solid rgba(0,0,0,.05);
+            display: flex; align-items: center; justify-content: space-between;
+            text-decoration: none;
+            transition: color .2s, padding-left .2s;
+        }
+        .sm-drawer a.drawer-link:hover,
+        .sm-drawer a.drawer-link.active {
+            color: var(--sm-blue);
+            padding-left: 6px;
+        }
+        .sm-drawer a.drawer-link i.chevron {
+            font-size: 13px; opacity: .35;
+        }
+        .sm-drawer .drawer-footer {
+            margin-top: auto; padding-top: 20px;
+            border-top: 1px solid var(--sm-line);
+            display: flex; flex-direction: column; gap: 8px;
+            font-size: 12.5px; color: var(--sm-gray);
+        }
+        .sm-drawer .drawer-hotline {
+            display: inline-flex; align-items: center; gap: 8px;
+            color: #d0021b; font-weight: 700; font-size: 14px;
+            text-decoration: none;
+        }
 
         /* prefers-reduced-motion completely removed */
 
@@ -914,17 +1078,50 @@
 
     {{-- ===== MOBILE DRAWER ===== --}}
     <nav class="sm-drawer" id="smDrawer" aria-label="Menu di động">
-        <button class="close" id="smDrawerClose" aria-label="Đóng menu"><i class="bi bi-x-lg"></i></button>
-        <a href="{{ url('/') }}">Trang chủ</a>
-        <a href="{{ route('products.index') }}">Sản phẩm</a>
-        <a href="{{ route('news.index') }}">Tin tức</a>
-        <a href="{{ route('contact.index') }}">Liên hệ</a>
-        <a href="{{ route('cart.index') }}">Giỏ hàng ({{ $cartCount ?? 0 }})</a>
+        <div class="drawer-header">
+            <span style="font-family:'Manrope',sans-serif;font-weight:800;font-size:16px;color:var(--sm-black);letter-spacing:-0.02em;">DANH MỤC</span>
+            <button class="close" id="smDrawerClose" aria-label="Đóng menu"><i class="bi bi-x-lg"></i></button>
+        </div>
+        <a href="{{ url('/') }}" class="drawer-link {{ request()->is('/') ? 'active' : '' }}">
+            <span><i class="bi bi-house-door me-2 text-primary"></i>Trang chủ</span>
+            <i class="bi bi-chevron-right chevron"></i>
+        </a>
+        <a href="{{ route('products.index') }}" class="drawer-link {{ request()->routeIs('products.*') ? 'active' : '' }}">
+            <span><i class="bi bi-grid me-2 text-primary"></i>Sản phẩm</span>
+            <i class="bi bi-chevron-right chevron"></i>
+        </a>
+        <a href="{{ route('news.index') }}" class="drawer-link {{ request()->routeIs('news.*') ? 'active' : '' }}">
+            <span><i class="bi bi-newspaper me-2 text-primary"></i>Tin tức</span>
+            <i class="bi bi-chevron-right chevron"></i>
+        </a>
+        <a href="{{ route('about.index') }}" class="drawer-link {{ request()->routeIs('about.*') ? 'active' : '' }}">
+            <span><i class="bi bi-info-circle me-2 text-primary"></i>Giới thiệu</span>
+            <i class="bi bi-chevron-right chevron"></i>
+        </a>
+        <a href="{{ route('contact.index') }}" class="drawer-link {{ request()->routeIs('contact.*') ? 'active' : '' }}">
+            <span><i class="bi bi-envelope me-2 text-primary"></i>Liên hệ & Hỗ trợ</span>
+            <i class="bi bi-chevron-right chevron"></i>
+        </a>
+        <a href="{{ route('cart.index') }}" class="drawer-link {{ request()->routeIs('cart.*') ? 'active' : '' }}">
+            <span><i class="bi bi-cart2 me-2 text-primary"></i>Giỏ hàng ({{ $cartCount ?? 0 }})</span>
+            <i class="bi bi-chevron-right chevron"></i>
+        </a>
         @auth
-        <a href="{{ route('profile.account') }}">Tài khoản</a>
+        <a href="{{ route('profile') }}" class="drawer-link {{ request()->routeIs('profile*') ? 'active' : '' }}">
+            <span><i class="bi bi-person-circle me-2 text-primary"></i>Tài khoản của tôi</span>
+            <i class="bi bi-chevron-right chevron"></i>
+        </a>
         @else
-        <a href="{{ route('login') }}">Đăng nhập</a>
+        <a href="{{ route('login') }}" class="drawer-link">
+            <span><i class="bi bi-box-arrow-in-right me-2 text-primary"></i>Đăng nhập / Đăng ký</span>
+            <i class="bi bi-chevron-right chevron"></i>
+        </a>
         @endauth
+
+        <div class="drawer-footer">
+            <a href="tel:19001234" class="drawer-hotline"><i class="bi bi-telephone-fill"></i> 1900 1234</a>
+            <div>Hỗ trợ mua hàng & bảo hành 24/7</div>
+        </div>
     </nav>
 
     <div class="sm-backdrop" id="smBackdrop"></div>

@@ -428,14 +428,21 @@
    RESPONSIVE
    ============================================================ */
 @media (max-width: 680px) {
-    .cart-title-row h1 { font-size: 28px; letter-spacing: -.5px; }
+    .cart-page { padding: 20px 0 60px; }
+    .cart-container { width: 100%; padding: 0 16px; box-sizing: border-box; }
+    .cart-title-row { margin-bottom: 20px; padding-bottom: 14px; }
+    .cart-title-row h1 { font-size: 24px; letter-spacing: -.5px; }
 
     .product-row {
-        grid-template-columns: 96px 1fr;
-        gap: 14px;
+        grid-template-columns: 86px 1fr;
+        gap: 12px;
+        padding: 16px 0;
     }
-    .product-image-wrap { width: 96px; height: 96px; }
-    .product-image-wrap img { width: 80px; height: 80px;  mix-blend-mode: multiply; }
+    .product-image-wrap { width: 86px; height: 86px; }
+    .product-image-wrap img { width: 72px; height: 72px; mix-blend-mode: multiply; }
+    .product-info h5 { font-size: 14px; }
+    .brand { margin-bottom: 8px; font-size: 11.5px; }
+    .price-cell { margin-bottom: 8px; font-size: 13px; }
 
     .product-right {
         grid-column: 1 / -1;
@@ -443,9 +450,34 @@
         align-items: center;
         justify-content: space-between;
         min-width: 0;
+        padding-top: 4px;
     }
+    .subtotal-cell { font-size: 15.5px; }
 
-    .cross-sell h2 { font-size: 24px; }
+    .summary-box {
+        padding: 20px 16px;
+        border-radius: 12px;
+    }
+    .summary-box h3 { font-size: 18px; margin-bottom: 16px; }
+
+    .cross-sell { margin-top: 48px; }
+    .cross-sell h2 { font-size: 22px; }
+    .cross-sell-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+    .cross-sell-name { font-size: 13px; }
+}
+
+@media (max-width: 380px) {
+    .product-row {
+        grid-template-columns: 74px 1fr;
+    }
+    .product-image-wrap { width: 74px; height: 74px; }
+    .product-image-wrap img { width: 62px; height: 62px; }
+    .cross-sell-grid {
+        grid-template-columns: 1fr;
+    }
 }
 </style>
 @endpush

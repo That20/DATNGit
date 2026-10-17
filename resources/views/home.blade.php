@@ -393,15 +393,7 @@
     background: var(--sm-black);
     transform: scale(1.2);
 }
-.sm-showcase-dot:hover { background: rgba(0,0,0,.45); }
-
-@media (max-width: 900px) {
-    .sm-showcase-grid { grid-template-columns: 1fr; }
-    .sm-showcase-visual { aspect-ratio: 1/1; max-width: 400px; margin: 0 auto; }
-    .sm-showcase-steps { min-height: 220px; text-align: center; }
-    .sm-step p { margin-left: auto; margin-right: auto; }
-    .sm-showcase-dots { justify-content: center; }
-}
+.sm-step-visual-mobile { display: none; }
 
 /* ============================================================
    5. SPEC CALLOUTS (số to + đường dẫn, kiểu 50MP)
@@ -791,40 +783,859 @@
 @keyframes smRippleOut { to { transform: scale(4); opacity: 0; } }
 
 /* ============================================================
-   15. RESPONSIVE
+   15. RESPONSIVE DESIGN (DESKTOP -> TABLET -> MOBILE)
    ============================================================ */
-@media (max-width: 1100px) {
-    .sm-products, .sm-skeleton-grid { grid-template-columns: repeat(3, 1fr); }
+@media (max-width: 1200px) {
+    .sm-products, .sm-skeleton-grid { grid-template-columns: repeat(4, 1fr); gap: 16px; }
+}
 
-    .sm-specs { grid-template-columns: repeat(2, 1fr); }
-    .sm-trust { grid-template-columns: repeat(2, 1fr); }
-    .sm-trust-item:nth-child(odd) { border-left: none; }
-}
-@media (max-width: 900px) {
-    .sm-slide-content { grid-template-columns: 1fr; text-align: center; }
-    .sm-slide-text { order: 2; }
-    .sm-slide-visual { order: 1; }
-    .sm-slide-desc { margin-left: auto; margin-right: auto; }
-    .sm-slide .sm-btn { margin: 0 auto; }
-    .sm-showcase-grid { grid-template-columns: 1fr; }
-    .sm-showcase-visual { position: relative; top: auto; aspect-ratio: 1/1; }
-    .sm-step { min-height: auto; padding: 22px 0; opacity: 1; }
-    .sm-news { grid-template-columns: 1fr 1fr; }
-    .sm-promos { grid-template-columns: 1fr; }
-}
 @media (max-width: 1024px) {
-    .sm-promos { grid-template-columns: repeat(2, 1fr); gap: 14px; }
-    .sm-promo { min-height: 220px; flex-direction: column; text-align: center; } .sm-promo-content { align-items: center; } .sm-promo .sm-btn { align-self: center; }
+    .sm-products, .sm-skeleton-grid { grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .sm-promos { grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .sm-promo { min-height: 180px; padding: 18px 12px; }
+    .sm-promo-tag { font-size: 10px; margin-bottom: 4px; }
+    .sm-promo h3 { font-size: 15px; margin-bottom: 4px; line-height: 1.25; }
+    .sm-promo-sub { font-size: 11px; margin-bottom: 12px; }
+    .sm-promo .sm-btn { height: 32px; padding: 0 14px; font-size: 11px; }
+    .sm-news { grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .sm-specs { grid-template-columns: repeat(2, 1fr); }
+    .sm-trust { grid-template-columns: repeat(3, 1fr); }
+    .sm-trust-item:nth-child(3n+1) { border-left: none; }
+}
+
+@media (max-width: 900px) {
+    /* 1. BANNER SLIDER MOBILE (Matching Mobile 375x812 card layout) */
+    .sm-slider-track {
+        aspect-ratio: auto;
+        min-height: 360px;
+    }
+    .sm-slider.only-img-banners .sm-slider-track {
+        min-height: 200px;
+        aspect-ratio: 16 / 9;
+    }
+    .sm-slide {
+        min-height: 360px;
+        padding: 24px 20px 24px;
+        box-sizing: border-box;
+        display: flex !important;
+        align-items: center !important;
+        overflow: hidden;
+    }
+    .sm-slide.sm-slide-img-only {
+        min-height: 200px;
+        aspect-ratio: 16 / 9;
+        padding: 0 !important;
+    }
+    .sm-slide-img-only picture {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+    }
+    .sm-slide-content,
+    .sm-slide-content.layout-split,
+    .sm-slide-content.layout-split-right,
+    .sm-slide-content.layout-text_center,
+    .sm-slide-content.layout-text_left,
+    .sm-slide-content.layout-text_right {
+        display: block !important;
+        position: relative !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        height: 100% !important;
+        padding: 0 !important;
+        box-sizing: border-box !important;
+        text-align: left !important;
+    }
+    .sm-slide-text {
+        order: 1 !important;
+        position: relative !important;
+        z-index: 3 !important;
+        width: 100% !important;
+        max-width: 58% !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        text-align: left !important;
+    }
+    .sm-slide-label {
+        display: inline-block !important;
+        background: #1565C0 !important;
+        color: #fff !important;
+        font-size: 11px !important;
+        font-weight: 800 !important;
+        letter-spacing: .5px !important;
+        padding: 4px 12px !important;
+        border-radius: 20px !important;
+        margin-bottom: 12px !important;
+        width: fit-content !important;
+        text-transform: uppercase !important;
+        box-shadow: 0 2px 8px rgba(21, 101, 192, 0.35) !important;
+    }
+    .sm-slide-title {
+        font-size: clamp(20px, 5.5vw, 26px) !important;
+        font-weight: 800 !important;
+        line-height: 1.2 !important;
+        margin: 0 0 10px !important;
+        text-align: left !important;
+        word-break: break-word !important;
+        overflow-wrap: break-word !important;
+    }
+    .sm-slide-desc {
+        font-size: 12.5px !important;
+        opacity: .85 !important;
+        line-height: 1.45 !important;
+        margin: 0 0 12px !important;
+        text-align: left !important;
+        max-width: 100% !important;
+        display: -webkit-box !important;
+        -webkit-line-clamp: 2 !important;
+        -webkit-box-orient: vertical !important;
+        overflow: hidden !important;
+        word-break: break-word !important;
+    }
+    .sm-slide-price {
+        font-size: 17px !important;
+        font-weight: 800 !important;
+        margin-bottom: 14px !important;
+        text-align: left !important;
+        display: flex !important;
+        align-items: baseline !important;
+        gap: 8px !important;
+    }
+    .sm-slide .sm-btn {
+        display: inline-flex !important;
+        align-items: center !important;
+        gap: 8px !important;
+        background: #fff !important;
+        color: #0a0f1e !important;
+        font-weight: 700 !important;
+        font-size: 13px !important;
+        padding: 8px 20px !important;
+        border-radius: 24px !important;
+        border: none !important;
+        width: fit-content !important;
+        height: auto !important;
+        min-height: 38px !important;
+        box-shadow: 0 4px 14px rgba(0,0,0,0.18) !important;
+        margin: 0 !important;
+    }
+    .sm-slide-visual {
+        order: 2 !important;
+        position: absolute !important;
+        right: 14px !important;
+        bottom: 14px !important;
+        z-index: 2 !important;
+        width: 46% !important;
+        max-width: 220px !important;
+        display: flex !important;
+        align-items: flex-end !important;
+        justify-content: flex-end !important;
+        pointer-events: none !important;
+    }
+    .sm-slide-visual img,
+    .sm-slide-visual picture img {
+        max-height: 170px !important;
+        max-width: 100% !important;
+        width: auto !important;
+        height: auto !important;
+        object-fit: contain !important;
+        margin: 0 !important;
+        border-radius: 12px !important;
+        filter: drop-shadow(0 12px 24px rgba(0,0,0,0.3)) !important;
+    }
+
+    /* Template overrides for mobile */
+    .sm-slide.tpl-national_day .sm-slide-title {
+        font-size: clamp(20px, 5.5vw, 26px) !important;
+        line-height: 1.2 !important;
+        margin: 0 0 10px !important;
+    }
+    .sm-slide.tpl-national_day .sm-slide-label {
+        background: #ffff00 !important;
+        color: #da251d !important;
+        font-size: 11px !important;
+        padding: 4px 10px !important;
+        margin-bottom: 12px !important;
+    }
+    .sm-slide.tpl-national_day .sm-slide-price {
+        font-size: 18px !important;
+        margin: 0 0 14px !important;
+        text-shadow: none !important;
+    }
+    .sm-slide.tpl-national_day .sm-btn {
+        background: linear-gradient(90deg, #f59e0b, #d97706) !important;
+        color: #fff !important;
+        font-size: 13px !important;
+        padding: 8px 20px !important;
+        box-shadow: none !important;
+    }
+
+    .sm-slider-arrow {
+        display: none !important;
+    }
+    .sm-dots {
+        bottom: 10px;
+        padding: 5px 12px;
+        gap: 6px;
+    }
+    .sm-dot {
+        width: 6px;
+        height: 6px;
+    }
+    .sm-dot.active {
+        width: 22px;
+    }
+
+    /* 2. SHOWCASE SLIDER MOBILE (Card with embedded product image) */
+    .sm-showcase-visual {
+        display: none !important;
+    }
+    .sm-showcase-grid {
+        grid-template-columns: 1fr !important;
+        gap: 0 !important;
+    }
+    .sm-showcase-steps {
+        position: relative !important;
+        width: 100% !important;
+        max-width: 440px !important;
+        margin: 0 auto !important;
+        background: #ffffff !important;
+        border-radius: 20px !important;
+        padding: 24px 20px 22px !important;
+        box-shadow: 0 8px 30px rgba(0,0,0,0.06) !important;
+        box-sizing: border-box !important;
+        min-height: 440px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+    }
+    .sm-step {
+        position: absolute !important;
+        inset: 0 !important;
+        padding: 24px 20px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+        text-align: center !important;
+        opacity: 0 !important;
+        visibility: hidden !important;
+        transition: opacity .5s var(--sm-ease), visibility .5s !important;
+        box-sizing: border-box !important;
+    }
+    .sm-step.on {
+        position: relative !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+    .sm-step-visual-mobile {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        width: 100% !important;
+        max-width: 240px !important;
+        height: 180px !important;
+        margin: 0 auto 16px !important;
+        background: #f8fafc !important;
+        border-radius: 16px !important;
+        padding: 12px !important;
+        box-sizing: border-box !important;
+    }
+    .sm-step-visual-mobile img {
+        max-height: 100% !important;
+        max-width: 100% !important;
+        width: auto !important;
+        height: auto !important;
+        object-fit: contain !important;
+        transition: transform .5s var(--sm-ease) !important;
+        filter: drop-shadow(0 6px 14px rgba(0,0,0,0.07)) !important;
+    }
+    .sm-step.on .sm-step-visual-mobile img {
+        transform: scale(1.04) !important;
+    }
+    .sm-step-num {
+        font-size: 11px !important;
+        font-weight: 800 !important;
+        letter-spacing: .12em !important;
+        margin-bottom: 8px !important;
+    }
+    .sm-step h3 {
+        font-size: 20px !important;
+        line-height: 1.25 !important;
+        margin: 0 0 10px !important;
+    }
+    .sm-step p {
+        font-size: 13.5px !important;
+        line-height: 1.5 !important;
+        margin: 0 auto 16px !important;
+        max-width: 100% !important;
+        display: -webkit-box !important;
+        -webkit-line-clamp: 3 !important;
+        -webkit-box-orient: vertical !important;
+        overflow: hidden !important;
+    }
+    .sm-step .sm-btn {
+        height: 36px !important;
+        padding: 0 20px !important;
+        font-size: 13px !important;
+        margin: 0 auto !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+    .sm-showcase-dots {
+        margin-top: 18px !important;
+        justify-content: center !important;
+        z-index: 5 !important;
+        position: relative !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .sm-hero {
+        height: auto;
+        min-height: 480px;
+        padding: 60px 0 50px;
+    }
+    .sm-hero h1 {
+        font-size: clamp(26px, 7vw, 44px);
+        margin-bottom: 14px;
+    }
+    .sm-hero p {
+        font-size: 14px;
+        margin-bottom: 24px;
+    }
+    .sm-hero-cta {
+        flex-direction: column;
+        width: 100%;
+        max-width: 260px;
+        margin: 0 auto;
+        gap: 10px;
+    }
+    .sm-hero-cta .sm-btn {
+        width: 100%;
+    }
+    .sm-hero-controls {
+        right: 14px;
+        bottom: 14px;
+    }
+    .sm-hero-controls button {
+        width: 36px;
+        height: 36px;
+        font-size: 13px;
+    }
+    .sm-scroll-cue {
+        display: none;
+    }
+
+    .sm-events {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+    .sm-event-v2__thumb {
+        height: 160px;
+    }
+
+    .sm-brands-rail {
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 10px !important;
+        padding: 0 16px !important;
+        overflow-x: visible !important;
+        max-width: 100% !important;
+    }
+    .sm-brand {
+        width: 100% !important;
+        padding: 14px 8px 12px !important;
+        border-radius: 14px !important;
+        box-sizing: border-box !important;
+    }
+    .sm-brand-logo {
+        height: 36px !important;
+        margin-bottom: 6px !important;
+    }
+    .sm-brand-logo img {
+        max-height: 28px !important;
+        max-width: 64px !important;
+    }
+    .sm-brand-initials {
+        width: 34px !important;
+        height: 34px !important;
+        font-size: 13px !important;
+    }
+    .sm-brand-name {
+        font-size: 11px !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        max-width: 100% !important;
+    }
+
+    .sm-trust {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .sm-trust-item {
+        padding: 16px 14px;
+        gap: 10px;
+    }
+    .sm-trust-item:nth-child(2n+1) {
+        border-left: none;
+    }
+    .sm-trust-item:last-child {
+        grid-column: 1 / -1;
+        justify-content: center;
+        border-top: 1px solid var(--sm-line);
+    }
 }
 
 @media (max-width: 640px) {
-    .sm-products, .sm-skeleton-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-    .sm-promos { grid-template-columns: 1fr; gap: 12px; }
-    .sm-promo { min-height: 220px; padding: 24px; flex-direction: column; text-align: center; }
-    .sm-news { grid-template-columns: 1fr; }
-    .sm-trust { grid-template-columns: 1fr; }
-    .sm-trust-item { border-left: none !important; border-top: 1px solid var(--sm-line); }
-    .sm-trust-item:first-child { border-top: none; }
+    .sm-wrap {
+        padding: 0 16px;
+    }
+    .sm-section {
+        padding: 44px 0;
+    }
+    .sm-section--tight {
+        padding: 30px 0;
+    }
+    .sm-h2 {
+        font-size: clamp(24px, 6vw, 36px);
+        margin-bottom: 12px;
+    }
+    .sm-h3 {
+        font-size: clamp(20px, 5.2vw, 28px);
+        margin-bottom: 10px;
+    }
+    .sm-lead {
+        font-size: 14px;
+        line-height: 1.55;
+    }
+
+    .sm-section-head {
+        margin-bottom: 20px;
+        gap: 10px;
+    }
+
+    .sm-products, .sm-skeleton-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+    .sm-product {
+        padding: 10px 10px 14px;
+        border-radius: 16px;
+    }
+    .sm-product-media {
+        border-radius: 12px;
+        margin-bottom: 10px;
+    }
+    .sm-product-brand {
+        font-size: 10px;
+        min-height: 13px;
+    }
+    .sm-product-name {
+        font-size: 13px;
+        line-height: 1.32;
+        margin: 4px 0 6px;
+        min-height: 34px;
+    }
+    .sm-product-price {
+        font-size: 14.5px;
+    }
+    .sm-stars {
+        font-size: 11px;
+        margin-top: 6px;
+        gap: 3px;
+    }
+    .sm-wish {
+        width: 28px;
+        height: 28px;
+        font-size: 12px;
+        top: 6px;
+        right: 6px;
+    }
+    .sm-product-buy {
+        padding-top: 10px;
+    }
+    .sm-product-buy .sm-btn {
+        height: 36px;
+        font-size: 12px;
+        padding: 0 10px;
+        width: 100%;
+    }
+
+    .sm-promos {
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 6px !important;
+    }
+    .sm-promo {
+        min-height: 105px !important;
+        padding: 8px 6px !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        text-align: left !important;
+        border-radius: 12px !important;
+        gap: 4px !important;
+    }
+    .sm-promo-content {
+        align-items: flex-start !important;
+        flex: 1 !important;
+        min-width: 0 !important;
+        padding: 0 !important;
+    }
+    .sm-promo-tag {
+        font-size: 7.5px !important;
+        letter-spacing: 0.04em !important;
+        margin-bottom: 2px !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+    }
+    .sm-promo h3 {
+        font-size: 11px !important;
+        font-weight: 800 !important;
+        line-height: 1.2 !important;
+        margin: 0 0 3px !important;
+        display: -webkit-box !important;
+        -webkit-line-clamp: 2 !important;
+        -webkit-box-orient: vertical !important;
+        overflow: hidden !important;
+    }
+    .sm-promo-sub {
+        display: none !important;
+    }
+    .sm-promo-media {
+        width: 44px !important;
+        height: 44px !important;
+        max-width: 44px !important;
+        flex-shrink: 0 !important;
+    }
+    .sm-promo-media img {
+        max-width: 100% !important;
+        max-height: 100% !important;
+        object-fit: contain !important;
+        border-radius: 6px !important;
+    }
+    .sm-promo .sm-btn {
+        align-self: flex-start !important;
+        height: 24px !important;
+        padding: 0 8px !important;
+        font-size: 9px !important;
+        font-weight: 700 !important;
+        margin-top: 2px !important;
+        white-space: nowrap !important;
+    }
+
+    .sm-news {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+    .sm-news-card {
+        display: flex;
+        flex-direction: column;
+        background: #fff;
+        border-radius: 16px;
+        padding: 10px 10px 14px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+    }
+    .sm-news-media {
+        border-radius: 12px;
+        margin-bottom: 8px;
+        aspect-ratio: 16 / 10;
+    }
+    .sm-news-title {
+        font-size: 13px;
+        font-weight: 700;
+        line-height: 1.32;
+        margin-bottom: 4px;
+        min-height: 34px;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+    .sm-news-excerpt {
+        display: none;
+    }
+    .sm-news-meta {
+        font-size: 10.5px;
+        color: #8c8c8c;
+        margin-top: auto;
+    }
+
+    .sm-faq-q {
+        padding: 18px 4px;
+        font-size: 15px;
+    }
+    .sm-faq-a p {
+        font-size: 13.5px;
+    }
+
+    .sm-cta .sm-btn {
+        width: 100%;
+        max-width: 280px;
+        margin: 6px auto;
+        display: block;
+    }
+
+    .sm-videocard {
+        border-radius: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Banner slider 480px */
+    .sm-slider-track {
+        min-height: 340px !important;
+    }
+    .sm-slider.only-img-banners .sm-slider-track {
+        min-height: 160px !important;
+    }
+    .sm-slide {
+        min-height: 340px !important;
+        padding: 18px 16px 20px !important;
+    }
+    .sm-slide.sm-slide-img-only {
+        min-height: 160px !important;
+        padding: 0 !important;
+    }
+    .sm-slide-text {
+        max-width: 56% !important;
+    }
+    .sm-slide-label {
+        font-size: 10px !important;
+        padding: 3px 10px !important;
+        margin-bottom: 8px !important;
+    }
+    .sm-slide-title {
+        font-size: 19px !important;
+        line-height: 1.2 !important;
+        margin: 0 0 8px !important;
+    }
+    .sm-slide-desc {
+        font-size: 11.5px !important;
+        line-height: 1.38 !important;
+        margin: 0 0 10px !important;
+    }
+    .sm-slide-price {
+        font-size: 15.5px !important;
+        margin-bottom: 10px !important;
+    }
+    .sm-slide .sm-btn {
+        min-height: 34px !important;
+        padding: 7px 16px !important;
+        font-size: 12px !important;
+    }
+    .sm-slide-visual {
+        right: 12px !important;
+        bottom: 12px !important;
+        width: 48% !important;
+        max-width: 185px !important;
+    }
+    .sm-slide-visual img,
+    .sm-slide-visual picture img {
+        max-height: 150px !important;
+        border-radius: 10px !important;
+    }
+
+    .sm-slide.tpl-national_day .sm-slide-title {
+        font-size: 19px !important;
+        line-height: 1.2 !important;
+        margin: 0 0 8px !important;
+    }
+    .sm-slide.tpl-national_day .sm-slide-label {
+        font-size: 10px !important;
+        padding: 3px 8px !important;
+        margin-bottom: 8px !important;
+    }
+    .sm-slide.tpl-national_day .sm-slide-price {
+        font-size: 16.5px !important;
+        margin: 0 0 10px !important;
+    }
+    .sm-slide.tpl-national_day .sm-btn {
+        font-size: 12px !important;
+        padding: 7px 16px !important;
+    }
+
+    /* Showcase slider 480px */
+    .sm-showcase-steps {
+        padding: 18px 14px 18px !important;
+        border-radius: 16px !important;
+        min-height: 400px !important;
+    }
+    .sm-step {
+        padding: 18px 14px !important;
+    }
+    .sm-step-visual-mobile {
+        max-width: 210px !important;
+        height: 155px !important;
+        margin-bottom: 12px !important;
+        border-radius: 14px !important;
+    }
+    .sm-step h3 {
+        font-size: 18px !important;
+        margin-bottom: 6px !important;
+    }
+    .sm-step p {
+        font-size: 12.5px !important;
+        line-height: 1.45 !important;
+        margin-bottom: 14px !important;
+    }
+    .sm-step .sm-btn {
+        height: 34px !important;
+        padding: 0 16px !important;
+        font-size: 12px !important;
+    }
+
+    .sm-promos {
+        gap: 4px !important;
+    }
+    .sm-promo {
+        padding: 6px 4px !important;
+        min-height: 92px !important;
+        border-radius: 10px !important;
+        gap: 2px !important;
+    }
+    .sm-promo-tag {
+        font-size: 6.8px !important;
+        margin-bottom: 1px !important;
+    }
+    .sm-promo h3 {
+        font-size: 9.5px !important;
+        line-height: 1.15 !important;
+        margin-bottom: 2px !important;
+    }
+    .sm-promo-media {
+        width: 34px !important;
+        height: 34px !important;
+        max-width: 34px !important;
+    }
+    .sm-promo-media img {
+        border-radius: 4px !important;
+    }
+    .sm-promo .sm-btn {
+        height: 20px !important;
+        padding: 0 5px !important;
+        font-size: 8px !important;
+    }
+
+    .sm-brands-rail {
+        gap: 8px !important;
+        padding: 0 12px !important;
+    }
+    .sm-brand {
+        padding: 10px 6px 8px !important;
+        border-radius: 12px !important;
+    }
+    .sm-brand-logo {
+        height: 30px !important;
+        margin-bottom: 4px !important;
+    }
+    .sm-brand-logo img {
+        max-height: 24px !important;
+        max-width: 54px !important;
+    }
+    .sm-brand-initials {
+        width: 30px !important;
+        height: 30px !important;
+        font-size: 12px !important;
+    }
+    .sm-brand-name {
+        font-size: 10px !important;
+    }
+
+    .sm-trust {
+        grid-template-columns: 1fr;
+    }
+    .sm-trust-item {
+        padding: 14px 12px;
+        border-left: none !important;
+        border-top: 1px solid var(--sm-line);
+    }
+    .sm-trust-item:first-child {
+        border-top: none;
+    }
+    .sm-trust-item:last-child {
+        grid-column: auto;
+        justify-content: flex-start;
+    }
+}
+
+@media (max-width: 360px) {
+    .sm-products, .sm-skeleton-grid, .sm-news {
+        grid-template-columns: 1fr;
+    }
+    /* Banner slider 360px */
+    .sm-slider-track {
+        min-height: 320px !important;
+    }
+    .sm-slide {
+        min-height: 320px !important;
+        padding: 14px 12px 18px !important;
+    }
+    .sm-slide-text {
+        max-width: 55% !important;
+    }
+    .sm-slide-visual {
+        right: 8px !important;
+        bottom: 8px !important;
+        width: 46% !important;
+        max-width: 150px !important;
+    }
+    .sm-slide-visual img,
+    .sm-slide-visual picture img {
+        max-height: 125px !important;
+        border-radius: 8px !important;
+    }
+    .sm-slide-title {
+        font-size: 17px !important;
+    }
+    .sm-slide-desc {
+        font-size: 11px !important;
+        max-width: 250px !important;
+    }
+    .sm-slide-price {
+        font-size: 14px !important;
+        margin-bottom: 8px !important;
+    }
+    .sm-slide .sm-btn {
+        min-height: 32px !important;
+        font-size: 11px !important;
+        padding: 6px 14px !important;
+    }
+    .sm-slide.tpl-national_day .sm-slide-title {
+        font-size: 17px !important;
+    }
+    .sm-slide.tpl-national_day .sm-slide-price {
+        font-size: 15px !important;
+    }
+    .sm-slide.tpl-national_day .sm-btn {
+        min-height: 32px !important;
+        font-size: 11px !important;
+        padding: 6px 14px !important;
+    }
+
+    /* Showcase slider 360px */
+    .sm-showcase-steps {
+        padding: 14px 10px 14px !important;
+        min-height: 370px !important;
+    }
+    .sm-step {
+        padding: 14px 10px !important;
+    }
+    .sm-step-visual-mobile {
+        max-width: 180px !important;
+        height: 135px !important;
+        margin-bottom: 10px !important;
+    }
+    .sm-step h3 {
+        font-size: 16.5px !important;
+    }
+    .sm-step p {
+        font-size: 11.5px !important;
+    }
 }
 </style>
 @endpush
@@ -866,7 +1677,10 @@
          BANNER SLIDER
          ============================================================ --}}
     @if($banners->isNotEmpty())
-    <section class="sm-slider" id="smSlider" aria-label="Khuyến mãi nổi bật">
+    @php
+        $hasRichBanners = $banners->contains(fn($b) => !$b->isImageOnly());
+    @endphp
+    <section class="sm-slider {{ $hasRichBanners ? 'has-rich-banners' : 'only-img-banners' }}" id="smSlider" aria-label="Khuyến mãi nổi bật">
         <div class="sm-slider-track">
             @foreach($banners as $i => $banner)
                 @if($banner->isImageOnly())
@@ -874,7 +1688,12 @@
                     @if($banner->button_link)
                     <a href="{{ $banner->button_link }}" style="position:absolute;inset:0;z-index:3"></a>
                     @endif
-                    @if($banner->image)
+                    @if($banner->image_mobile)
+                    <picture>
+                        <source media="(max-width: 768px)" srcset="{{ $banner->image_mobile }}">
+                        <img class="sm-kb" src="{{ $banner->image }}" alt="{{ $banner->title ?: 'Khuyến mãi' }}">
+                    </picture>
+                    @elseif($banner->image)
                     <img class="sm-kb" src="{{ $banner->image }}" alt="{{ $banner->title ?: 'Khuyến mãi' }}">
                     @else
                     <div class="sm-slide-ph" style="position:absolute;inset:0"><i class="bi bi-image"></i></div>
@@ -963,13 +1782,18 @@
                             @elseif($banner->price_text)
                             <div class="sm-slide-price">{{ $banner->price_text }}</div>
                             @endif
-                            @if($banner->button_text)
-                            <a href="{{ $banner->button_link ?: '#' }}" class="sm-btn sm-btn--dark" style="{{ $banner->btn_color ? 'background-color:'.$banner->btn_color.'; border-color:'.$banner->btn_color.';' : '' }}">{{ $banner->button_text }}</a>
-                            @endif
+                            <a href="{{ $banner->button_link ?: '#' }}" class="sm-btn sm-btn--dark" style="{{ $banner->btn_color ? 'background-color:'.$banner->btn_color.'; border-color:'.$banner->btn_color.';' : '' }}">{{ $banner->button_text ?: 'Mua ngay' }} <i class="bi bi-arrow-right"></i></a>
                         </div>
                         <div class="sm-slide-visual">
-                            @if($isVisualImage && $banner->image)
-                            <img src="{{ $banner->image }}" alt="{{ $banner->title }}">
+                            @if($isVisualImage && ($banner->image || $banner->image_mobile))
+                                @if($banner->image_mobile)
+                                <picture>
+                                    <source media="(max-width: 768px)" srcset="{{ $banner->image_mobile }}">
+                                    <img src="{{ $banner->image }}" alt="{{ $banner->title }}">
+                                </picture>
+                                @else
+                                <img src="{{ $banner->image }}" alt="{{ $banner->title }}">
+                                @endif
                             @endif
                         </div>
                     </div>
@@ -1124,6 +1948,13 @@
                 <div class="sm-showcase-steps">
                     @foreach($showcaseItems as $k => $sp)
                     <div class="sm-step {{ $k === 0 ? 'on' : '' }}" data-step="{{ $k }}">
+                        <div class="sm-step-visual-mobile">
+                            @if($sp->first_image)
+                            <img src="{{ $sp->first_image }}" alt="{{ $sp->name }}" loading="lazy">
+                            @else
+                            <img src="{{ asset('images/promo-samsung.png') }}" alt="{{ $sp->name }}" loading="lazy">
+                            @endif
+                        </div>
                         <div class="sm-step-num">0{{ $k + 1 }} — {{ $sp->category->name ? mb_strtoupper($sp->category->name, 'UTF-8') : 'ĐIỂM NỔI BẬT' }}</div>
                         <h3>{{ $sp->name }}</h3>
                         <p>{{ $sp->description ? \Illuminate\Support\Str::limit(strip_tags($sp->description), 160) : 'Sản phẩm chính hãng, bảo hành toàn quốc, sẵn hàng giao ngay.' }}</p>

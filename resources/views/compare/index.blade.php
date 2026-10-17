@@ -610,18 +610,75 @@ body {
     .compare-card { width: 280px; }
 }
 @media (max-width: 768px) {
-    .compare-header { gap: 18px; }
-    .compare-card { width: 240px; padding: 18px; }
-    .compare-image { height: 160px; }
-    .compare-image img { width: 140px; height: 140px; }
+    .compare-page { padding: 20px 0 50px; }
+    .compare-title { font-size: 24px; margin-bottom: 24px; }
+    .compare-title i { width: 40px; height: 40px; font-size: 18px; }
+    .compare-header { gap: 14px; }
+    .compare-card { width: 220px; padding: 14px; border-radius: 14px; }
+    .compare-image { height: 130px; }
+    .compare-image img { width: 110px; height: 110px; }
     .compare-card h3 { font-size: 13px; }
-    .price { font-size: 20px; }
+    .price { font-size: 18px; }
+    .compare-table {
+        border-radius: 10px;
+        -webkit-overflow-scrolling: touch;
+    }
+    .compare-table th, .compare-table td {
+        padding: 9px 8px;
+        font-size: 12px;
+        line-height: 1.35;
+    }
+    .compare-table th:first-child,
+    .compare-table td:first-child {
+        width: 105px !important;
+        min-width: 105px !important;
+        font-size: 12px;
+    }
+}
+@media (max-width: 520px) {
+    .compare-table table {
+        font-size: 11px;
+    }
+    .compare-table th, .compare-table td {
+        padding: 7px 6px;
+        font-size: 11px;
+        line-height: 1.3;
+        letter-spacing: -0.2px;
+    }
+    .compare-table th {
+        font-size: 11px;
+        letter-spacing: 0;
+    }
+    .compare-table th:first-child,
+    .compare-table td:first-child {
+        width: 85px !important;
+        min-width: 85px !important;
+        max-width: 90px !important;
+        font-size: 11px;
+        padding-left: 6px;
+        padding-right: 6px;
+    }
+    .attribute-name {
+        font-size: 11px;
+    }
 }
 @media (max-width: 480px) {
     .compare-header { flex-direction: column; align-items: center; }
-    .compare-card, .compare-add { width: 100%; max-width: 320px; }
-    .compare-table { font-size: 12px; }
-    .compare-table th, .compare-table td { padding: 12px 8px; }
+    .compare-card, .compare-add { width: 100%; max-width: 300px; }
+}
+@media (max-width: 380px) {
+    .compare-table th, .compare-table td {
+        padding: 6px 4px;
+        font-size: 10px;
+    }
+    .compare-table th:first-child,
+    .compare-table td:first-child {
+        width: 75px !important;
+        min-width: 75px !important;
+        font-size: 10px;
+        padding-left: 4px;
+        padding-right: 4px;
+    }
 }
 </style>
 @endpush

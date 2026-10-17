@@ -396,8 +396,13 @@ body {
     padding-top: 40px;
 }
 @media (max-width: 1280px) { .grid-4 { grid-template-columns: repeat(3, 1fr); } }
-@media (max-width: 900px)  { .grid-4 { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 560px)  { .grid-4 { grid-template-columns: 1fr; gap: 16px; } }
+@media (max-width: 560px)  {
+    .grid-4 { grid-template-columns: repeat(2, 1fr); gap: 10px; padding-top: 20px; }
+    .product-card { padding: 12px; border-radius: 16px; }
+    .product-card-img { height: 140px; margin-bottom: 10px; }
+    .badge-tag { font-size: 10px; margin-bottom: 6px; }
+}
+@media (max-width: 360px)  { .grid-4 { grid-template-columns: 1fr; } }
 
 /* ============================================================
    PRODUCT CARD — bg #f7f7f7, radius 20px, padding 24px, no shadow
